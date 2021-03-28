@@ -3,7 +3,7 @@ pipeline{
 	JAVA_TOOL_OPTIONS="-Duser.home=/home/jenkins"
     }
     agent{
-        docker{
+        dockerfile{
             label "main"
 	    args "-v /home/jenkins-controller-01/maven:/home/jenkins/.m2 -e MAVEN_CONFIG=/home/jenkins/.m2"
         }
