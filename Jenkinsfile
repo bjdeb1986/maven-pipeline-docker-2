@@ -1,11 +1,11 @@
 pipeline{
     environment{
-	JAVA_TOOL_OPTIONS="-Duser.home=/var/maven"
+	JAVA_TOOL_OPTIONS="-Duser.home=/home/jenkins-controller-01"
     }
     agent{
         dockerfile{
             label "main"
-	    args "-v /home/jenkins-controller-01/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
+	    args "-v /home/jenkins-controller-01/maven:/home/jenkins-controller-01/.m2 -e MAVEN_CONFIG=/home/jenkins-controller-01/.m2"
         }
     }
     options{
@@ -29,7 +29,7 @@ pipeline{
         }
         stage('Run'){
             steps{
-                sh 'java -cp ${WORKSPACE}/target/maven-pipeline-docker-1-1.0.jar myTest.com.App'
+                sh 'java -cp ${WORKSPACE}/target/maven-pipeline-docker-2-1.0-SNAPSHOT.jar myTest.com.App'
             }
         }
     }
